@@ -1,6 +1,6 @@
 ﻿namespace Kalkulator_prosjekt
 {
-    partial class Form1
+    partial class GUI
     {
         /// <summary>
         /// Required designer variable.
