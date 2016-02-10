@@ -9,20 +9,17 @@ namespace Kalkulator_prosjekt
 {
     class Variabel_tolk
     {
-        private static String pattern = @"(\w[\w\d]+)=(.+)";
+        private static String pattern = @"(\w[\w\d_]+)\s*=\s*(.+)";
         private static Regex regex = new Regex(pattern, RegexOptions.IgnoreCase);
         private static Dictionary<String, String> variables = new Dictionary<string, string>();
 
 
         public static String getResult(String input)
         {
-            Console.WriteLine(variables.Count);
-
             //Replace variables
             foreach (String key in variables.Keys)
             {
                 input = input.Replace(key, variables[key]);
-                Console.WriteLine(key + " = " + variables[key]);
             }
 
             //Define variables
@@ -33,13 +30,18 @@ namespace Kalkulator_prosjekt
                 Group name = match.Groups[1];
                 Group value = match.Groups[2];
 
-                Console.WriteLine("[DEBUG] Variabel_tolk.cs: " + name.Value + " bound to " + value.Value);
+                //Resolve value of the variable
+                String resolvedValue = Wolfram.getResult(value.Value + "*1");
+
+                Console.WriteLine("[DEBUG] Variabel_tolk.cs: " + name.Value + " bound to " + resolvedValue);
 
                 //Add to dictionary
-                variables.Add(name.Value, value.Value);
-                return "Variabel definert, gratulerer!";
+                variables.Add(name.Value, resolvedValue);
+                return "Variabel " + name + "definert til " + resolvedValue + ", gratulerer!";
             }
-            return input;
+
+            //Calculate and return answer
+            return Wolfram.getResult(input);
         }
 
 
