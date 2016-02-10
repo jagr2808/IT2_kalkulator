@@ -16,5 +16,7 @@ namespace Kalkulator_prosjekt
         {
             InitializeComponent();
         }
+
+       
     }
 }
