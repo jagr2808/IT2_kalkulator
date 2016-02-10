@@ -9,13 +9,22 @@ namespace Kalkulator_prosjekt
 {
     class Variabel_tolk
     {
-        private static String pattern = @"(\w[\w\d]+)=(.*)";
+        private static String pattern = @"(\w[\w\d]+)=(.+)";
         private static Regex regex = new Regex(pattern, RegexOptions.IgnoreCase);
         private static Dictionary<String, String> variables = new Dictionary<string, string>();
 
 
         public static String getResult(String input)
         {
+            Console.WriteLine(variables.Count);
+
+            //Replace variables
+            foreach (String key in variables.Keys)
+            {
+                input = input.Replace(key, variables[key]);
+                Console.WriteLine(key + " = " + variables[key]);
+            }
+
             //Define variables
             Match match = regex.Match(input);
             if (match.Success)
@@ -32,6 +41,7 @@ namespace Kalkulator_prosjekt
             }
             return input;
         }
+
 
     }
 }
