@@ -17,6 +17,21 @@ namespace Kalkulator_prosjekt
             InitializeComponent();
         }
 
-       
+        private void erlik_Click(object sender, EventArgs k)
+        {
+            try
+            {
+                string s = Variabel_tolk.getResult(textBox1.Text);
+                label1.Text = s;
+                //print s til svarfelt
+            }
+            catch (Exception e)
+            {
+                string s = e.Message;
+                label1.Text = s;
+                //print s til svarfelt som feilmelding (rød tekst)
+            }
+
+        }
     }
 }

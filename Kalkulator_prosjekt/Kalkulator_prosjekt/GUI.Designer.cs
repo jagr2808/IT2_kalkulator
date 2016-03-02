@@ -326,6 +326,7 @@
             this.erlik.TabIndex = 26;
             this.erlik.Text = "=";
             this.erlik.UseVisualStyleBackColor = true;
+            this.erlik.Click += new System.EventHandler(this.erlik_Click);
             // 
             // Tilbake
             // 
