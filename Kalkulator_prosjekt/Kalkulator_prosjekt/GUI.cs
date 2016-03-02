@@ -23,13 +23,13 @@ namespace Kalkulator_prosjekt
             {
                 string s = Variabel_tolk.getResult(textBox1.Text);
                 label1.Text = s;
-                //print s til svarfelt
+                label1.ForeColor = Color.FromArgb(0, 0, 0);
             }
             catch (Exception e)
             {
                 string s = e.Message;
                 label1.Text = s;
-                //print s til svarfelt som feilmelding (rød tekst)
+                label1.ForeColor = Color.FromArgb(255, 0, 0);
             }
 
         }
