@@ -15,6 +15,7 @@ namespace Kalkulator_prosjekt
         public GUI()
         {
             InitializeComponent();
+            pictureBox1.Load("https://www.wolfram.com/common/images/products/wolfram-mathematica.png");
         }
 
         private void erlik_Click(object sender, EventArgs k)
