@@ -9,7 +9,7 @@ namespace Kalkulator_prosjekt
 {
     class Variabel_tolk
     {
-        private static String pattern = @"(\w[\w\d_]+)\s*=\s*(.+)";
+        private static String pattern = @"(\w[\w\d_]*)\s*=\s*(.+)";
         private static Regex regex = new Regex(pattern, RegexOptions.IgnoreCase);
         private static Dictionary<String, String> variables = new Dictionary<string, string>();
 
@@ -37,7 +37,7 @@ namespace Kalkulator_prosjekt
 
                 //Add to dictionary
                 variables.Add(name.Value, resolvedValue);
-                return "Variabel " + name + "definert til " + resolvedValue + ", gratulerer!";
+                return "Variabel " + name + " definert til " + resolvedValue + ", gratulerer!";
             }
 
             //Calculate and return answer
